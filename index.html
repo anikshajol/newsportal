@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>BD.Daily News</title>
+
+    <!-- css -->
+
+    <link rel="stylesheet" href="./style/style.css" />
 
     <!-- DaisyUi -->
     <link
@@ -15,6 +19,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
+    <!-- Navigation section start -->
+
+    <nav>
+      <div class="navbar bg-base-100 flex-col lg:flex-row justify-between">
+        <div class="navbar-center lg:navbar-start">
+          <a class="btn btn-ghost normal-case text-xl"
+            ><span class="bg-blue-800 p-2 text-white font-bold">BD.Daily</span>
+            <span class="text-red-800 font-bold">News</span></a
+          >
+        </div>
+        <div class="navbar-center lg:navbar-end lg:flex">
+          <ul class="menu menu-vertical flex-col p-0 lg:flex-row">
+            <li class="text-red-800"><a>News</a></li>
+            <li><a>Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Navigation section end -->
+
     <!-- JavaScript -->
     <script src="./js/app.js"></script>
   </body>
