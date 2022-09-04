@@ -49,17 +49,20 @@ const displayArticle=(news)=>{
 
 news.forEach(content => {
     console.log(content);
+    
+    const {author, thumbnail_url,title,details,image_url}= content
   
+
     const div = document.createElement('div');
     div.classList.add("card", "grid", "grid-cols-1", "lg:card-side", "bg-base-100", "shadow-xl", "mb-4", "p-2")
 
 
     div.innerHTML=`
-    <figure><img src="${content.thumbnail_url}" class="" alt="Album">
+    <figure><img src="${thumbnail_url}" class="" alt="Album">
     </figure>
     <div class="card-body">
-      <h2 class="card-title">${content.title}</h2>
-      <p>${content.details.length>20?content.details.slice(0,20)+'...':content.details}</p>
+      <h2 class="card-title">${title}</h2>
+      <p>${details.length>20?details.slice(0,20)+'...':details}</p>
       <div class="card-actions justify-end">
         <button class="btn btn-primary">Show More</button>
       </div>
