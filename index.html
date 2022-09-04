@@ -10,6 +10,12 @@
 
     <link rel="stylesheet" href="./style/style.css" />
 
+    <!-- fontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/e4fd83d3e1.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- DaisyUi -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css"
@@ -59,6 +65,25 @@
       <!-- Main section start -->
       <main>
         <section id="news-container"></section>
+
+        <!-- Modal start -->
+
+        <section id="modal-section">
+          <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+
+          <div class="modal">
+            <div class="modal-box relative">
+              <label
+                for="my-modal-3"
+                class="btn btn-sm btn-circle absolute right-2 top-2"
+                >✕</label
+              >
+
+              <div id="modal-body"></div>
+            </div>
+          </div>
+        </section>
+        <!-- Modal end -->
       </main>
       <!-- Main section end -->
     </section>
