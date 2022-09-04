@@ -45,6 +45,7 @@ const loadArticle=(id)=>{
     fetch(url)
     .then(res=>res.json())
     .then(data=>displayArticle(data.data))
+    .catch(error=>console.log(error))
    
 }
 
@@ -53,7 +54,7 @@ const displayArticle=(news)=>{
     newsContainer.textContent = '';
 
     // load Spinner
-   loadSpinner(true)
+    loadSpinner(true)
 
 // search result
     const id = document.getElementById('number');
@@ -96,7 +97,7 @@ news.forEach(content => {
             <div>
                 <p><span><i class="fa-regular fa-eye"></i></span> ${total_view}</p>
             </div>
-            <label onclick="newsDetails('${_id}')" for="my-modal-3" class="btn modal-button">open modal</label>
+            <label onclick="newsDetails('${_id}')" for="my-modal-3" class="btn modal-button">Show Details</label>
         </div>
     </div>
     
@@ -111,6 +112,7 @@ loadSpinner(false)
 
 }
 
+// loading spinner
 const loadSpinner = isLoading =>{
     const spinner = document.getElementById('spinner')
     if(isLoading){
@@ -166,3 +168,4 @@ modalBody.innerHTML=`
 // newsDetails()
 
 loadCategory()
+loadArticle(01)
