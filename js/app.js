@@ -35,6 +35,8 @@ contentLi.classList.add('m-4')
 
 }
 
+
+
 const loadArticle=(id)=>{
   
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
@@ -48,10 +50,11 @@ const loadArticle=(id)=>{
 
 const displayArticle=(news)=>{
     const newsContainer = document.getElementById('news-container');
-   
-    console.log(news);
     newsContainer.textContent = '';
-    
+
+    // load Spinner
+   loadSpinner(true)
+
 // search result
     const id = document.getElementById('number');
     const noResult = document.getElementById('no-result-found')
@@ -61,6 +64,7 @@ const displayArticle=(news)=>{
         id.innerText = parseInt(news.length)
         
     }else{
+        id.innerText = '0'
         noResult.classList.remove('hidden')
     }
 
@@ -99,8 +103,21 @@ news.forEach(content => {
     `
     newsContainer.appendChild(div)
 
+    
+   
 });
+// stop spinner
+loadSpinner(false)
 
+}
+
+const loadSpinner = isLoading =>{
+    const spinner = document.getElementById('spinner')
+    if(isLoading){
+        spinner.classList.remove('hidden')
+    }else{
+        spinner.classList.add('hidden')        
+    }
 }
 
 
