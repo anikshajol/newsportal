@@ -50,11 +50,11 @@ const displayArticle=(news)=>{
 news.forEach(content => {
     console.log(content);
     
-    const {author, thumbnail_url,title,details,image_url}= content
-  
+    const {author, thumbnail_url,title,details,image_url,total_view}= content
+  const {name,published_date,img} = author
 
     const div = document.createElement('div');
-    div.classList.add("card", "grid", "grid-cols-1", "lg:card-side", "bg-base-100", "shadow-xl", "mb-4", "p-2")
+    div.classList.add("card", "lg:flex", "grid", "grid-cols-1", "lg:card-side", "bg-base-100", "shadow-xl", "mb-4",)
 
 
     div.innerHTML=`
@@ -63,7 +63,20 @@ news.forEach(content => {
     <div class="card-body">
       <h2 class="card-title">${title}</h2>
       <p>${details.length>20?details.slice(0,20)+'...':details}</p>
-      <div class="card-actions justify-end">
+      <div class="card-actions justify-between">
+    <section class= "flex gap-5" >
+    <figure>
+    <img src="${img}" class="w-10 rounded-full" alt="" />
+  </figure>
+<div>
+<p>${name}</p>
+<p>${published_date}</p>
+</div>
+    </section>
+    <div>
+    <p>${total_view}</p>
+  </div>
+
         <button class="btn btn-primary">Show More</button>
       </div>
     </div>
