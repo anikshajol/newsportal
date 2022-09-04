@@ -1,3 +1,5 @@
+// category 
+
 const loadCategory = ()=>{
     const url = `https://openapi.programming-hero.com/api/news/categories`;
 
@@ -12,7 +14,9 @@ const loadCategory = ()=>{
 const displayCategory = (category)=>{
 const menuContent = document.getElementById('menu-content')
 
-// console.log(category);
+console.log(category.news_category);
+
+
 
 category.news_category.forEach(content => {
     // console.log(content.category_id);
@@ -45,11 +49,24 @@ const loadArticle=(id)=>{
 const displayArticle=(news)=>{
     const newsContainer = document.getElementById('news-container');
    
-    newsContainer.textContent = ''
+    console.log(news);
+    newsContainer.textContent = '';
+    
+// search result
+    const id = document.getElementById('number');
+    const noResult = document.getElementById('no-result-found')
+    
+    if(news.length){
+        noResult.classList.remove('hidden')
+        id.innerText = parseInt(news.length)
+        
+    }else{
+        noResult.classList.remove('hidden')
+    }
 
 news.forEach(content => {
     console.log(content);
-    const {author, thumbnail_url,title,details,image_url,total_view,_id}= content
+    const {author, thumbnail_url,title,details,total_view,_id}= content
   const {name,published_date,img} = author
 
     const div = document.createElement('div');
@@ -93,28 +110,40 @@ const newsDetails = (newsId) =>{
     const url = (`https://openapi.programming-hero.com/api/news/${newsId}`)
     fetch(url)
     .then(res=>res.json())
-    .then(data=>displayNewsDetails(data.data))
-    .catch(error=>console.log(error))
+    .then(data=>displayNewsDetails(data.data[0]))
+    .catch(error=>console.log(error))    
 }
 
 
 
 const displayNewsDetails= (newsDetails)=>{
-const {author,details,image_url,title}=newsDetails[0];
+
+const {author,details,image_url,title,total_view}=newsDetails;
+
+const {name,img,published_date}=author;
 
 const modalBody = document.getElementById('modal-body')
 
 modalBody.innerHTML=` 
-<figure><img src="${image_url}" alt="Shoes" /></figure>
+<figure><img src="${image_url}" alt="Shoes" class= 'p-4'  /></figure>
+<section class= "flex gap-5 mb-5" >
+            <figure>
+                <img src="${img}" class="w-10 rounded-full" alt="" />
+            </figure>
+            <div>
+                <p>${name===null ?"No Data Found" :name==="system"?"No Data Found":name}</p>
+                <p>${published_date===null?"No Data Found":published_date==="system"?"No Data Found":published_date}</p>
+            </div>
+            <div>
+            <p><span><i class="fa-regular fa-eye"></i></span> ${total_view==null?'No Data Found':total_view==="system"?"No Data Found" :total_view}</p>
+        </div>
+</section>
+           
 <h2 class="card-title">${title}</h2>
 <p>${details}</p>
 
 
 `
-
-
-
-
 }
 
 // newsDetails()
