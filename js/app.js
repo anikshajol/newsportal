@@ -14,7 +14,7 @@ const displayCategory = (category) => {
  
   category.news_category.forEach((content) => {
     const contentLi = document.createElement("li");
-    contentLi.classList.add("m-4");
+    contentLi.classList.add("m-4","hover:bg-blue-900", "hover:text-white", "p-1", "rounded-md");
 
     contentLi.innerHTML = `
    
