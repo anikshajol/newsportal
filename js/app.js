@@ -32,8 +32,7 @@ contentLi.classList.add('m-4')
 }
 
 const loadArticle=(id)=>{
-    // https://openapi.programming-hero.com/api/news/category/{category_id}
-
+  
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
     // console.log('load',id);
     console.log(url);
@@ -56,11 +55,11 @@ news.forEach(content => {
 
 
     div.innerHTML=`
-    <figure><img src="${content.image_url}" class="w-1/2" alt="Album">
+    <figure><img src="${content.thumbnail_url}" class="" alt="Album">
     </figure>
     <div class="card-body">
       <h2 class="card-title">${content.title}</h2>
-      <p>${content.details}</p>
+      <p>${content.details.length>20?content.details.slice(0,20)+'...':content.details}</p>
       <div class="card-actions justify-end">
         <button class="btn btn-primary">Show More</button>
       </div>
