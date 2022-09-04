@@ -63,7 +63,7 @@ const displayArticle = (news) => {
     noResult.classList.remove("hidden");
     id.innerText = parseInt(news.length);
   } else {
-    id.innerText = "0";
+    id.innerText = "No";
     noResult.classList.remove("hidden");
   }
 
